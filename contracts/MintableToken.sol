@@ -2,13 +2,20 @@ pragma solidity ^0.4.17;
 
 import './StandartToken.sol';
 
+/**
+ * @title Mintable token
+ * @dev Mints new tokens.
+ */
 contract MintableToken is StandartToken {
     
     bool public mintingStopped = false;
     
+    /**
+    * Throws if called when minting is stopped or paused.
+    */
     modifier canMint() {
         require(!mintingStopped);
-        
+        require(periods[0].start <= now && periods[0].end >= now || periods[1].start <= now && periods[1].end >= now);
         _;
     }
     
@@ -19,7 +26,10 @@ contract MintableToken is StandartToken {
         return true;
     }
 
-    function finishMinting() public onlyOwner returns (bool) {
+    /**
+    * Stop minting if needed.
+    */
+    function stopMinting() public onlyOwner returns (bool) {
         mintingStopped = !mintingStopped;
         emit MintStopped();
         return true;

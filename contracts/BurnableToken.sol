@@ -2,6 +2,10 @@ pragma solidity ^0.4.17;
 
 import './StandartToken.sol';
 
+/**
+ * @title Burnable Token
+ * @dev Burns tokens if needed.
+ */
 contract BurnableToken is StandartToken {
     
     function burn (uint256 _value) canUseTokens public returns (bool success) {

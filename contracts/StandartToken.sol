@@ -3,6 +3,10 @@ pragma solidity ^0.4.17;
 import './ERC20.sol';
 import './Limitation.sol';
 
+/**
+ * @title Standard ERC20 token
+ * @dev Implementation of the ERC-20 standard.
+ */
 contract StandartToken is ERC20, Limitation {
     
     mapping (address => uint256) balances;
