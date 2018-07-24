@@ -20,7 +20,7 @@ contract Crowdsale is LotteryToken, MintableToken {
     }
     
     /**
-    * Ñalculates the required amount of tokens to be minted. 
+    * Calculates the required amount of tokens to be minted. 
     */
     function createTokens() internal {
         uint256 salePeriod = getCurrentPeriod();
